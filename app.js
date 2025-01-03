@@ -1,9 +1,9 @@
-var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cors = require('cors');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var httpError = require('http-errors');
 
 var indexRouter = require('./routes/index');
 var studentRouter = require('./routes/student');
@@ -27,7 +27,7 @@ app.use('/student', studentRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+  next(httpError(404));
 });
 
 // error handler
